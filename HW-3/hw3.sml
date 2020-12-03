@@ -13,10 +13,10 @@ fun longest_string2 l =
     List.foldl (fn (x, y) => (if String.size(x) >= String.size(y) then x else y)) "" l
 
 fun longest_string_helper f xs = 
-	List.foldl (fn (x, y) => (if f(String.size(x), String.size(y)) then x else y)) "" xs
+	List.foldl (fn (x, y) => (if f(String.size(y), String.size(x)) then y else x)) "" xs
 
-val longest_string3 = longest_string_helper (fn (x, y) => x > y)
-val longest_string4 = longest_string_helper (fn (x, y) => x >= y)
+val longest_string3 = longest_string_helper (fn (x, y) => x >= y)
+val longest_string4 = longest_string_helper (fn (x, y) => x > y)
 
 val longest_capitalized = longest_string4 o only_capitals
 
